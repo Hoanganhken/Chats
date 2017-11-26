@@ -4,45 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".StartActivity">
+    android:background="@drawable/bg_gradient"
+    tools:context=".LoginActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/start_login_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:text="Login"
+        android:textColor="#6D69DF"
+        android:background="@drawable/btn_grey"
+        android:layout_marginBottom="33dp"
+        android:layout_above="@+id/btnFacebook"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/btnFacebook"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:textColor="#6D69DF"
+        android:background="@drawable/btn_grey"
+        android:text="Facebook"
+        android:layout_marginBottom="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/start_login_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:text="Welcome to Lapit \n Chat App"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="36dp"
+        android:text="Muni Chats "
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <TextView
         android:id="@+id/start_reg_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@android:color/white"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:text="@string/need_a_new_account"
-        android:textColor="@color/colorPrimary" />
+        android:layout_marginBottom="12dp"
+        android:text="Chưa Có Tài Khoản"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
-    <Button
-        android:id="@+id/start_login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/start_reg_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorAccent"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="ALREADY HAVE ACCOUNT"
-        android:textColor="@android:color/white" />
 </RelativeLayout>

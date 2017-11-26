@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">MutiChats</string>
-    <string name="need_a_new_account">NEED A NEW ACCOUNT ?</string>
-    <string name="display_name">Display Name</string>
+    <string name="need_a_new_account">Cần một tài khoản mới?</string>
+    <string name="display_name">Tên hiển thị</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="create_account">CREATE ACCOUNT</string>
-    <string name="log_out">Log Out</string>
+    <string name="create_account">TẠO TÀI KHOẢN</string>
+    <string name="log_out">Đăng xuất</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="default_status">Hi there, I\'m using Lapit Chat App</string>
+    <string name="hello_blank_fragment">Xin Chào</string>
+    <string name="default_status">Chào bạn, tôi đang sử dụng Muti Chat App</string>
 </resources>

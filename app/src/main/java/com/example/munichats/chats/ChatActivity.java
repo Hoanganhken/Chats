@@ -1,7 +1,9 @@
 package com.example.munichats.chats;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,12 +52,23 @@ public class ChatActivity extends AppCompatActivity {
     private EditText mChatMessageView;
 
     private RecyclerView mMessagesList;
+    private SwipeRefreshLayout mRefreshLayout;
 
     private final List<Messages> messagesList = new ArrayList<>();
     private LinearLayoutManager mLinearLayout;
     private MessageAdapter mAdapter;
 
+    private  static  final  int TOTAL_ITEMS_TO_LOAD = 10;
+    private int mCurrentPage = 1;
 
+    private static  final int GALLERY_PICK = 1;
+
+    private StorageReference mImageStorege;
+
+
+    private  int itemPos =0;
+    private  String mLastKey = "";
+    private  String mPrevKey = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,7 +189,7 @@ public class ChatActivity extends AppCompatActivity {
         });
 
 
-
+// sendMessage
         mChatSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,10 +198,69 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+//Add Image
+        mChatAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent();
+                galleryIntent.setType("image/*");
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(galleryIntent, "SELECT IMAGE"), GALLERY_PICK);
+            }
+        });
 
-
-
+    mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            mCurrentPage++;
+            itemPos = 0;
+            //loadMoreMessages();
+        }
+    });
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == GALLERY_PICK && requestCode == RESULT_OK){
+//            Uri imagaUri = data.getData();
+//            final  String current_user_ref = "messages/" + mCurrentUserId ;
+//            DatabaseReference user_message_push = mRootRef.child("messsages")
+//                    .child(mCurrentUserId).child(mChatUser).push();
+//            final  String push_id = user_message_push.getKey();
+//
+//            StorageReference filepath = mImageStorege.child("message_images").child(push_id + ".jpg");
+//            filepath.putFile(imagaUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                    if ((task.isSuccessful())){
+//                        String download_url = task.getResult().getDownloadUrl().toString();
+//
+//                        Map messgeMap = new HashMap();
+//                        messgeMap.put("messge" , download_url);
+//                        messgeMap.put("seen" , false);
+//                        messgeMap.put("time" , ServerValue.TIMESTAMP);
+//                        messgeMap.put("from", mCurrentUserId);
+//
+//                        Map messageMap = new HashMap();
+//                        messgeMap.put(current_user_ref + "/" + push_id,messageMap);
+//                        messageMap.put(chat_user_ref + "/" + push_id,messageMap);
+//
+//                        mChatMessageView.setText("");
+//
+//                        mRootRef.updateChildren(messageMap);
+//
+//                        {
+//                            if(databaseError !=null){
+//                                Log.d("CHAT_LOG",databaseError.getMessage().toString());
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            });
+//        }
+//    }
 
     private void loadMessages() {
 

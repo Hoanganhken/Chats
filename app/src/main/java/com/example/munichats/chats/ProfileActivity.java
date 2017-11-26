@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +23,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
 
-    private ImageView mProfileImage;
+    private CircleImageView mProfileImage;
     private TextView mProfileName, mProfileStatus, mProfileFriendsCount;
     private Button mProfileSendReqBtn, mDeclineBtn;
 
@@ -59,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
         mCurrent_user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mProfileImage = (ImageView) findViewById(R.id.profile_image);
+        mProfileImage = (CircleImageView) findViewById(R.id.profile_image);
         mProfileName = (TextView) findViewById(R.id.profile_displayName);
         mProfileStatus = (TextView) findViewById(R.id.profile_status);
         mProfileFriendsCount = (TextView) findViewById(R.id.profile_totalFriends);
@@ -74,8 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setTitle("Loading User Data");
-        mProgressDialog.setMessage("Please wait while we load the user data.");
+        mProgressDialog.setTitle("Đang tải dữ liệu người dùng");
+        mProgressDialog.setMessage("Vui lòng chờ trong khi chúng tôi tải dữ liệu người dùng.");
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.show();
 
@@ -118,7 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if(req_type.equals("received")){
 
                                 mCurrent_state = "req_received";
-                                mProfileSendReqBtn.setText("Accept Friend Request");
+                                mProfileSendReqBtn.setText("Chấp nhận yêu cầu kết bạn");
 
                                 mDeclineBtn.setVisibility(View.VISIBLE);
                                 mDeclineBtn.setEnabled(true);
@@ -127,7 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
                             } else if(req_type.equals("sent")) {
 
                                 mCurrent_state = "req_sent";
-                                mProfileSendReqBtn.setText("Cancel Friend Request");
+                                mProfileSendReqBtn.setText("Hủy yêu cầu kết bạn");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -147,7 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
                                     if(dataSnapshot.hasChild(user_id)){
 
                                         mCurrent_state = "friends";
-                                        mProfileSendReqBtn.setText("Unfriend this Person");
+                                        mProfileSendReqBtn.setText("Hủy người này");
 
                                         mDeclineBtn.setVisibility(View.INVISIBLE);
                                         mDeclineBtn.setEnabled(false);
@@ -217,12 +218,12 @@ public class ProfileActivity extends AppCompatActivity {
 
                             if(databaseError != null){
 
-                                Toast.makeText(ProfileActivity.this, "There was some error in sending request", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this, "Đã xảy ra lỗi khi gửi yêu cầu", Toast.LENGTH_SHORT).show();
 
                             } else {
 
                                 mCurrent_state = "req_sent";
-                                mProfileSendReqBtn.setText("Cancel Friend Request");
+                                mProfileSendReqBtn.setText("Hủy yêu cầu kết bạn");
 
                             }
 
@@ -250,7 +251,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                     mProfileSendReqBtn.setEnabled(true);
                                     mCurrent_state = "not_friends";
-                                    mProfileSendReqBtn.setText("Send Friend Request");
+                                    mProfileSendReqBtn.setText("Gửi lời mời kết bạn");
 
                                     mDeclineBtn.setVisibility(View.INVISIBLE);
                                     mDeclineBtn.setEnabled(false);
@@ -289,7 +290,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                 mProfileSendReqBtn.setEnabled(true);
                                 mCurrent_state = "friends";
-                                mProfileSendReqBtn.setText("Unfriend this Person");
+                                mProfileSendReqBtn.setText("Hủy người này");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -325,7 +326,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if(databaseError == null){
 
                                 mCurrent_state = "not_friends";
-                                mProfileSendReqBtn.setText("Send Friend Request");
+                                mProfileSendReqBtn.setText("Gửi lời mời kết bạn");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);

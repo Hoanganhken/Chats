@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkColor"
+    android:background="@drawable/bg_gradient"
     tools:context=".ProfileActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:layout_alignParentTop="true"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/default_avatar" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/default_avatar" />
 
     <TextView
         android:id="@+id/profile_displayName"
@@ -24,7 +23,7 @@
         android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="Display Name"
+        android:text="Tên hiển thị"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
@@ -35,7 +34,7 @@
         android:layout_below="@+id/profile_displayName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:text="Current User Status"
+        android:text="Trạng thái Người dùng hiện tại"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
@@ -46,7 +45,7 @@
         android:layout_above="@+id/profile_send_req_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
-        android:text="Total Friends"
+        android:text="Tổng số bạn bè"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
@@ -58,7 +57,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="SEND FRIEND REQUEST"
+        android:text="GỬI LỜI MỜI KẾT BẠN"
         android:textColor="@android:color/white" />
 
     <Button
@@ -69,7 +68,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="DECLINE FRIEND REQUEST"
+        android:text="Không Kết Bạn"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>
