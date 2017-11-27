@@ -209,15 +209,15 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-    mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-        @Override
-        public void onRefresh() {
-            mCurrentPage++;
-            itemPos = 0;
-            //loadMoreMessages();
-        }
-    });
-    }
+//    mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//        @Override
+//        public void onRefresh() {
+//            mCurrentPage++;
+//            itemPos = 0;
+//            //loadMoreMessages();
+//        }
+//    });
+   }
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
