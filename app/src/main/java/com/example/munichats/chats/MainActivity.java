@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Lapit Chat");
+        getSupportActionBar().setTitle("Muni Chat");
 
         if (mAuth.getCurrentUser() != null) {
 

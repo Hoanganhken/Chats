@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MutiChats</string>
+    <string name="app_name">MuniChats</string>
     <string name="need_a_new_account">Cần một tài khoản mới?</string>
     <string name="display_name">Tên hiển thị</string>
     <string name="email">Email</string>
@@ -9,5 +9,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Xin Chào</string>
-    <string name="default_status">Chào bạn, tôi đang sử dụng Muti Chat App</string>
+    <string name="default_status">Chào bạn, tôi đang sử dụng MuniChats App</string>
 </resources>

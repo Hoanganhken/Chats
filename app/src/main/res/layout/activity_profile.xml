@@ -23,7 +23,7 @@
         android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="Tên hiển thị"
+        android:text="Display Name"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
@@ -34,7 +34,7 @@
         android:layout_below="@+id/profile_displayName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:text="Trạng thái Người dùng hiện tại"
+        android:text="Current User Status"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
